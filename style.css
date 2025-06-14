@@ -22,8 +22,8 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll during transitions */
     position: relative; /* For section positioning */
     /* បន្ថែម padding ទៅ body ដើម្បីកុំឱ្យមាតិកាត្រូវបានបាំងដោយ header និង footer */
-    padding-top: 75px; /* កែតម្រូវតាមកម្ពស់ header របស់អ្នក */
-    padding-bottom: 100px; /* កែតម្រូវតាមកម្ពស់ footer របស់អ្នក */
+    padding-top: 89px; /* កែតម្រូវតាមកម្ពស់ header របស់អ្នក */
+    padding-bottom: 85px; /* កែតម្រូវតាមកម្ពស់ footer របស់អ្នក (បង្រួម) */
 }
 
 .container {
@@ -227,8 +227,15 @@ a:hover {
 .main-nav ul li a {
     color: var(--white-color);
     font-weight: bold;
-    padding: 5px 0;
+    /* padding: 5px 0; */ /* Removed/adjusted for icon-only */
     transition: color 0.3s ease, border-bottom 0.3s ease;
+    display: flex; /* Ensure flex for icon centering */
+    justify-content: center; /* Center the icon */
+    align-items: center; /* Vertically center the icon */
+    height: 100%; /* Make the link fill the li height */
+    box-sizing: border-box; /* Include padding in height */
+    padding: 10px; /* Added padding for icon-only button space */
+    border-radius: var(--border-radius); /* Rounded corners for button look */
 }
 
 .main-nav ul li a:hover,
@@ -240,8 +247,9 @@ a:hover {
 /* Icons in nav/footer */
 .main-nav ul li a i,
 .footer-nav ul li a i {
-    margin-right: 8px;
+    margin-right: 0; /* Removed margin-right as only icon remains */
     color: var(--secondary-color);
+    font-size: 1.2em; /* Reduced icon size for better fit */
 }
 
 .main-nav ul li a:hover i,
@@ -416,7 +424,7 @@ a:hover {
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px 20px; /* កែសម្រួល padding របស់ footer */
+    padding: 10px 20px; /* កែសម្រួល padding របស់ footer ឱ្យតូចជាងមុន */
     background: var(--dark-bg);
     color: var(--white-color);
     border-top: 3px solid var(--primary-color);
@@ -436,31 +444,40 @@ footer {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly; /* ធ្វើឱ្យធាតុរាយៗស្មើគ្នា */
     flex-wrap: wrap;
-    margin-bottom: 15px;
+    margin-bottom: 5px; /* កាត់បន្ថយគម្លាតបន្តិចបន្តួច */
 }
 
 .footer-nav ul li {
-    margin: 0 15px 10px;
+    margin: 0 8px 5px; /* កាត់បន្ថយគម្លាតផ្តេក និងបញ្ឈរ */
 }
 
 .footer-nav ul li a {
     color: var(--white-color);
     font-weight: bold;
     transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
+    display: flex; /* Ensure flex for icon centering */
+    justify-content: center; /* Center the icon */
+    align-items: center; /* Vertically center the icon */
+    padding: 5px 10px; /* Adjust padding for icon-only buttons */
+    height: 100%; /* Make the link fill the li height */
+    box-sizing: border-box; /* Include padding in height */
+    border-radius: var(--border-radius); /* Add border-radius for button-like appearance */
+    border: 1px solid transparent; /* Add a transparent border */
 }
 
 .footer-nav ul li a:hover,
 .footer-nav ul li a.active {
     color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    border-color: var(--primary-color); /* Highlight border on hover/active */
 }
 
 .footer-nav ul li a i {
-    margin-right: 8px;
+    margin-right: 0; /* Removed margin-right as only icon remains */
     color: var(--secondary-color);
+    font-size: 1.5em; /* Increased icon size for better visibility */
 }
 
 .footer-nav ul li a:hover i,
@@ -807,8 +824,11 @@ footer p {
     }
 
     /* Detail pages adjustments */
+    #lesson-detail .container {
+        padding: 20px;
+    }
     #lesson-detail h2 {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     .video-container iframe {
         height: 400px;
@@ -818,7 +838,8 @@ footer p {
 /* For screens smaller than 768px (e.g., most Tablets in portrait, large phones) */
 @media (max-width: 768px) {
     body {
-        padding-bottom: 80px; /* កែតម្រូវ padding របស់ body សម្រាប់អេក្រង់តូច */
+        padding-bottom: 75px; /* កែតម្រូវ padding របស់ body សម្រាប់អេក្រង់តូច */
+        padding-top: 85px; /* កែតម្រូវ padding-top របស់ body សម្រាប់អេក្រង់តូច */
     }
     h1 { font-size: 2em; }
     h2 { font-size: 1.8em; }
@@ -873,7 +894,7 @@ footer p {
         background-color: var(--light-bg); /* Give background to buttons */
     }
     .main-nav ul li a i {
-        margin-right: 5px; /* Adjust icon margin */
+        margin-right: 0; /* Removed margin from icon to keep it centered with text */
     }
 
     /* Hero section adjustments */
@@ -943,28 +964,28 @@ footer p {
 
     /* Footer adjustments */
     footer {
-        padding: 20px 0; /* កែសម្រួល padding របស់ footer សម្រាប់អេក្រង់តូច */
+        padding: 10px 0; /* កែសម្រួល padding របស់ footer សម្រាប់អេក្រង់តូច */
     }
     .footer-nav ul {
         flex-direction: row; /* Keep footer nav items in a row initially */
         flex-wrap: wrap; /* Allow wrapping */
-        justify-content: center; /* Center them */
-        margin-bottom: 10px; /* Reduced margin */
+        justify-content: space-evenly; /* Center them */
+        margin-bottom: 5px; /* Reduced margin */
     }
     .footer-nav ul li {
-        margin: 5px; /* Adjust spacing for better wrapping */
+        margin: 3px; /* Adjust spacing for better wrapping */
         flex: 1 1 auto; /* Allow items to grow/shrink and take up space */
-        min-width: 120px; /* Ensure a minimum width for each button */
-        max-width: 180px; /* Optional: limit max width for larger screens */
+        min-width: 80px; /* Ensure a minimum width for each button */
+        max-width: 150px; /* Optional: limit max width for larger screens */
         box-sizing: border-box; /* Include padding/border in width calculation */
     }
     .footer-nav ul li a {
         display: block; /* Make the link fill the li */
-        padding: 8px 10px; /* Adjust padding */
+        padding: 5px 8px; /* Adjust padding */
         border: 1px solid var(--border-color); /* Add a subtle border */
         border-radius: var(--border-radius);
         text-align: center; /* Center the text inside the button */
-        font-size: 0.9em; /* Smaller font size */
+        font-size: 0.85em; /* Smaller font size */
         background-color: var(--light-bg); /* Add background to footer buttons */
     }
     .footer-nav ul li a i {
@@ -1022,10 +1043,10 @@ footer p {
         height: 250px;
     }
     .footer-nav ul li {
-        min-width: 100px; /* Reduce min-width for very small screens */
+        min-width: 70px; /* Reduce min-width for very small screens */
     }
     .footer-nav ul li a {
-        font-size: 0.85em; /* Further reduce font size for readability */
-        padding: 6px 8px;
+        font-size: 0.8em; /* Further reduce font size for readability */
+        padding: 5px 6px; /* Adjust padding */
     }
 }

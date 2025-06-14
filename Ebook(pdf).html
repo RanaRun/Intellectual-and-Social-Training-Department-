@@ -35,67 +35,77 @@
             text-align: center;
         }
     </style>
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ក្លឹបសិក្សាអនឡាញ</title>
     <link rel="manifest" href="/manifest.json"> </head>
+</head>
 <body>
-    ​<header class="main-header">
-    <div class="container">
+     <header class="main-header">
+        <div class="container">
+ <div class="container">
         <div class="header-branding">
             <h1 class="logo">ក្រុមអ្នកនិពន្ធកម្ពុជា</h1>
             <p class="tagline">ផ្នែកបណ្ដុះពុទ្ធិ និង សង្គម</p>
         </div>
         <nav class="main-nav">
         </nav>
-        <div class="header-logo-right">
-            <img src="logo.png" alt="ក្រុមអ្នកនិពន្ធកម្ពុជា Logo">
-        </div>
     </div>
 </header>
-
     <main>
-        <section id="ebook-view" class="common-section">
+        <section id="ebook-viewer" class="common-section">
             <div class="container">
-                <h2 id="ebook-title">សៀវភៅអេឡិចត្រូនិច</h2>
+                <h2 id="ebookTitle">សៀវភៅអេឡិចត្រូនិច</h2>
                 <div class="pdf-viewer-container">
-                    <p>កំពុងផ្ទុក PDF...</p>
-                    </div>
-                <a href="library.html" class="btn btn-secondary back-to-library">ត្រឡប់ទៅបណ្ណាល័យ</a>
+                    <p>កំពុងផ្ទុកឯកសារ PDF...</p>
+                </div>
+                <div class="action-buttons">
+                    <a href="library.html" class="btn btn-secondary">ត្រឡប់ទៅបណ្ណាល័យវិញ</a>
+                </div>
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
- ​</div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html" title="ទំព័រដើម"><i class="fas fa-home"></i></a></li>
+                    <li><a href="lessons.html" title="វគ្គសិក្សា"><i class="fas fa-book"></i></a></li>
+                    <li><a href="certificates.html" title="វិញ្ញាបនបត្រ"><i class="fas fa-award"></i></a></li>
+                    <li><a href="library.html" title="បណ្ណាល័យ"><i class="fas fa-book-open"></i></a></li>
+                    <li><a href="contact.html" title="ទំនាក់ទំនង"><i class="fas fa-envelope"></i></a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const bookId = urlParams.get('book');
-            const ebookTitleElement = document.getElementById('ebook-title');
+            const ebookTitleElement = document.getElementById('ebookTitle');
             const pdfViewerContainer = document.querySelector('.pdf-viewer-container');
-
             let title = "សៀវភៅអេឡិចត្រូនិច";
             let pdfPath = "";
 
-            switch(bookId) {
-                case 'buddhism':
-                    title = "១០៨ អំពីព្រះពុទ្ធសាសនា";
-                    pdfPath = "ebooks/១០៨អំពីពុទ្ធសាសនា.pdf"; // ផ្លូវទៅកាន់ PDF ដែលបាន Upload
+            switch (bookId) {
+                case 'khmer_literature':
+                    title = "សៀវភៅអក្សរសិល្ប៍ខ្មែរ";
+                    pdfPath = "ebooks/sample_khmer_literature.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF អក្សរសិល្ប៍ខ្មែរ
                     break;
-                case 'math':
-                    title = "សៀវភៅគណិតវិទ្យា";
-                    pdfPath = "ebooks/sample_math.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF គណិតវិទ្យា
+                case 'khmer_history':
+                    title = "សៀវភៅប្រវត្តិសាស្ត្រខ្មែរ";
+                    pdfPath = "ebooks/sample_khmer_history.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF ប្រវត្តិសាស្ត្រខ្មែរ
                     break;
-                case 'khmer':
-                    title = "សៀវភៅភាសាខ្មែរ";
-                    pdfPath = "ebooks/sample_khmer.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF ភាសាខ្មែរ
+                case 'geography':
+                    title = "សៀវភៅភូមិវិទ្យា";
+                    pdfPath = "ebooks/sample_geography.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF ភូមិវិទ្យា
+                    break;
+                case 'khmer_language':
+                    title = "សៀវភៅរចនាសម្ព័ន្ធភាសាខ្មែរ";
+                    pdfPath = "ebooks/sample_khmer_language.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF ភាសាខ្មែរ
                     break;
                 case 'physics':
                     title = "សៀវភៅរូបវិទ្យា";
@@ -123,9 +133,10 @@
                 // Remove existing content and embed iframe
                 pdfViewerContainer.innerHTML = `<iframe src="${pdfPath}" frameborder="0"></iframe>`;
             } else if (pdfViewerContainer && !bookId) {
-                 pdfViewerContainer.innerHTML = "<p>សូមជ្រើសរើសសៀវភៅពីបណ្ណាល័យ។</p>";
+                 pdfViewerContainer.innerHTML = "<p>សូមជ្រើសរើសសៀវភៅពី <a href='library.html'>បណ្ណាល័យ</a> ដើម្បីមើល។</p>";
             }
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
