@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ក្លឹបសិក្សាអនឡាញ - មើលសៀវភៅ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pdf-viewer-container {
+            width: 100%;
+            height: 80vh; /* 80% of viewport height */
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden; /* Ensure iframe fits */
+            box-shadow: var(--box-shadow);
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.2em;
+        }
+
+        .pdf-viewer-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .back-to-library {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ក្លឹបសិក្សាអនឡាញ</title>
+    <link rel="manifest" href="/manifest.json"> </head>
+<body>
+    ​<header class="main-header">
+    <div class="container">
+        <div class="header-branding">
+            <h1 class="logo">ក្រុមអ្នកនិពន្ធកម្ពុជា</h1>
+            <p class="tagline">ផ្នែកបណ្ដុះពុទ្ធិ និង សង្គម</p>
+        </div>
+        <nav class="main-nav">
+        </nav>
+        <div class="header-logo-right">
+            <img src="logo.png" alt="ក្រុមអ្នកនិពន្ធកម្ពុជា Logo">
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section id="ebook-view" class="common-section">
+            <div class="container">
+                <h2 id="ebook-title">សៀវភៅអេឡិចត្រូនិច</h2>
+                <div class="pdf-viewer-container">
+                    <p>កំពុងផ្ទុក PDF...</p>
+                    </div>
+                <a href="library.html" class="btn btn-secondary back-to-library">ត្រឡប់ទៅបណ្ណាល័យ</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+ ​</div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookId = urlParams.get('book');
+            const ebookTitleElement = document.getElementById('ebook-title');
+            const pdfViewerContainer = document.querySelector('.pdf-viewer-container');
+
+            let title = "សៀវភៅអេឡិចត្រូនិច";
+            let pdfPath = "";
+
+            switch(bookId) {
+                case 'buddhism':
+                    title = "១០៨ អំពីព្រះពុទ្ធសាសនា";
+                    pdfPath = "ebooks/១០៨អំពីពុទ្ធសាសនា.pdf"; // ផ្លូវទៅកាន់ PDF ដែលបាន Upload
+                    break;
+                case 'math':
+                    title = "សៀវភៅគណិតវិទ្យា";
+                    pdfPath = "ebooks/sample_math.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF គណិតវិទ្យា
+                    break;
+                case 'khmer':
+                    title = "សៀវភៅភាសាខ្មែរ";
+                    pdfPath = "ebooks/sample_khmer.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF ភាសាខ្មែរ
+                    break;
+                case 'physics':
+                    title = "សៀវភៅរូបវិទ្យា";
+                    pdfPath = "ebooks/sample_physics.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF រូបវិទ្យា
+                    break;
+                case 'chemistry':
+                    title = "សៀវភៅគីមីវិទ្យា";
+                    pdfPath = "ebooks/sample_chemistry.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF គីមីវិទ្យា
+                    break;
+                case 'history':
+                    title = "សៀវភៅប្រវត្តិវិទ្យា";
+                    pdfPath = "ebooks/sample_history.pdf"; // ឧទាហរណ៍: ផ្លូវសម្រាប់ PDF ប្រវត្តិវិទ្យា
+                    break;
+                default:
+                    title = "សៀវភៅអេឡិចត្រូនិច (មិនស្គាល់)";
+                    pdfViewerContainer.innerHTML = "<p>មិនមានឯកសារ PDF សម្រាប់សៀវភៅនេះទេ។</p>";
+                    break;
+            }
+
+            if (ebookTitleElement) {
+                ebookTitleElement.textContent = title;
+            }
+
+            if (pdfPath && pdfViewerContainer && bookId) {
+                // Remove existing content and embed iframe
+                pdfViewerContainer.innerHTML = `<iframe src="${pdfPath}" frameborder="0"></iframe>`;
+            } else if (pdfViewerContainer && !bookId) {
+                 pdfViewerContainer.innerHTML = "<p>សូមជ្រើសរើសសៀវភៅពីបណ្ណាល័យ។</p>";
+            }
+        });
+    </script>
+</body>
+</html>
