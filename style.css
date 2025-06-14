@@ -227,7 +227,6 @@ a:hover {
 .main-nav ul li a {
     color: var(--white-color);
     font-weight: bold;
-    /* padding: 5px 0; */ /* Removed/adjusted for icon-only */
     transition: color 0.3s ease, border-bottom 0.3s ease;
     display: flex; /* Ensure flex for icon centering */
     justify-content: center; /* Center the icon */
@@ -828,7 +827,7 @@ footer p {
         padding: 20px;
     }
     #lesson-detail h2 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
     .video-container iframe {
         height: 400px;
@@ -838,8 +837,8 @@ footer p {
 /* For screens smaller than 768px (e.g., most Tablets in portrait, large phones) */
 @media (max-width: 768px) {
     body {
-        padding-bottom: 75px; /* កែតម្រូវ padding របស់ body សម្រាប់អេក្រង់តូច */
         padding-top: 85px; /* កែតម្រូវ padding-top របស់ body សម្រាប់អេក្រង់តូច */
+        padding-bottom: 75px; /* កែតម្រូវ padding របស់ body សម្រាប់អេក្រង់តូច */
     }
     h1 { font-size: 2em; }
     h2 { font-size: 1.8em; }
@@ -855,10 +854,12 @@ footer p {
         text-align: center;
         padding-top: 10px; /* Add some padding to the top */
         padding-bottom: 10px; /* Add some padding to the bottom */
+        min-height: auto; /* Allow height to adjust based on content */
     }
     .header-branding {
         padding-right: 0;
-        margin-bottom: 10px; /* Reduce margin */
+        margin-bottom: 10px; /* Reduced margin */
+        flex: 0 0 auto; /* Ensure it takes its natural size */
     }
     .main-header .logo {
         font-size: 2em;
@@ -869,6 +870,10 @@ footer p {
     .header-logo-right {
         margin-top: 10px; /* Adjust margin */
         height: 40px; /* Smaller logo */
+        flex: 0 0 auto; /* Ensure it takes its natural size */
+    }
+    .main-nav {
+        flex: 0 0 auto; /* Ensure it takes its natural size */
     }
     .main-nav ul {
         flex-direction: column; /* Stack nav items vertically */
@@ -880,12 +885,12 @@ footer p {
     }
     .main-nav ul li {
         margin: 5px 0; /* Adjust space between stacked nav items */
-        width: 100%; /* Make links full width */
+        width: 80%; /* Make links 80% width */
     }
     .main-nav ul li a {
         padding: 8px 15px; /* Adjust padding */
         font-size: 1em; /* Adjust font size */
-        width: calc(100% - 30px); /* Adjust for padding */
+        /* width: calc(100% - 30px); */ /* Removed as width 80% is used on li */
         justify-content: center;
         display: flex; /* For centering content within the button */
         align-items: center; /* Vertically center icon and text */
@@ -931,7 +936,7 @@ footer p {
         font-size: 1.8em;
     }
     .lesson-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column layout for lesson items */
         gap: 20px;
     }
     .lesson-item img {
