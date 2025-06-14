@@ -13,10 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ... (កូដដែលមានស្រាប់របស់អ្នកសម្រាប់ navigation highlight, contact form, certificate verification) ...
-});
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
     // Highlight active navigation link
     const currentPath = window.location.pathname.split('/').pop();
     const navLinks = document.querySelectorAll('.main-nav ul li a');
@@ -35,32 +31,30 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayMessage(elementId, message, type) {
         const messageElement = document.getElementById(elementId);
         if (messageElement) {
-            messageElement.innerHTML = message;
-            messageElement.className = `form-status-message ${type}`;
-            messageElement.style.display = 'block';
+            messageElement.textContent = message;
+            messageElement.className = 'form-status-message ' + type;
+            messageElement.style.display = 'block'; // Make sure it's visible
+            setTimeout(() => {
+                messageElement.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
         }
     }
 
-    // Contact Form Submission (unchanged)
+    // Contact Form Submission
     const contactForm = document.getElementById('contactForm');
-    const contactFormStatus = document.getElementById('contactFormStatus');
-
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            // Simple validation
-            if (!name || !email || !message) {
+            if (name === '' || email === '' || message === '') {
                 displayMessage('contactFormStatus', 'សូមបំពេញគ្រប់វាលទាំងអស់។', 'error');
                 return;
             }
-
             // Simulate form submission
-            console.log('Contact Form Submitted!', { name, email, message });
+            console.log('Contact Form Data:', { name, email, message });
             displayMessage('contactFormStatus', 'សាររបស់អ្នកត្រូវបានផ្ញើដោយជោគជ័យ! យើងនឹងទាក់ទងអ្នកឆាប់ៗ។', 'success');
             contactForm.reset();
         });
@@ -89,7 +83,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Removed: All Login Modal Logic
-    // (loginRegisterBtn, authSection, closeAuthBtn, loginForm, registerForm, toggleToRegister, toggleToLogin)
-    // If you need login/registration functionality, you would re-implement it here.
+    // Smart Header (Hide on scroll down, show on scroll up)
+    let lastScrollTop = 0; // Stores the last scroll position
+    const header = document.querySelector('.main-header'); // Get the header element
+
+    if (header) { // Ensure header exists before adding listener
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Current scroll position
+
+            // If scrolling down and past the header, add 'header-hidden' class
+            if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                header.classList.add('header-hidden');
+            } 
+            // If scrolling up or at the very top, remove 'header-hidden' class
+            else if (scrollTop < lastScrollTop || scrollTop <= 0) {
+                header.classList.remove('header-hidden');
+            }
+            lastScrollTop = scrollTop; // Update last scroll position
+        });
+    }
 });

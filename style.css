@@ -22,7 +22,7 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll during transitions */
     position: relative; /* For section positioning */
     /* បន្ថែម padding ទៅ body ដើម្បីកុំឱ្យមាតិកាត្រូវបានបាំងដោយ header និង footer */
-    padding-top: 89px; /* កែតម្រូវតាមកម្ពស់ header របស់អ្នក */
+    padding-top: 95px; /* កែតម្រូវ padding-top របស់ body សម្រាប់ Header ថ្មី */
     padding-bottom: 85px; /* កែតម្រូវតាមកម្ពស់ footer របស់អ្នក (បង្រួម) */
 }
 
@@ -168,14 +168,19 @@ a:hover {
     top: 0;
     width: 100%;
     z-index: 1000;
+    transition: top 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transition for smooth hide/show */
+}
+
+.main-header.header-hidden {
+    transform: translateY(-100%); /* Adjust based on header height, ensures it hides completely */
 }
 
 .main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 60px; /* Reduced min-height */
-    padding: 5px 20px; /* Reduced vertical padding */
+    min-height: 70px; /* កែសម្រួល min-height ឱ្យខ្ពស់ជាងមុនបន្តិច */
+    padding: 10px 20px; /* កែសម្រួល padding ខាងក្នុង Container របស់ Header */
 }
 
 .header-branding {
@@ -221,7 +226,7 @@ a:hover {
     margin: 0;
     padding: 0;
     display: inline-flex;
-    gap: 25px;
+    gap: 30px; /* បង្កើនគម្លាតរវាងធាតុ Nav */
 }
 
 .main-nav ul li a {
@@ -233,7 +238,7 @@ a:hover {
     align-items: center; /* Vertically center the icon */
     height: 100%; /* Make the link fill the li height */
     box-sizing: border-box; /* Include padding in height */
-    padding: 10px; /* Added padding for icon-only button space */
+    padding: 12px; /* បង្កើន padding សម្រាប់ប៊ូតុង Icon-only */
     border-radius: var(--border-radius); /* Rounded corners for button look */
 }
 
@@ -827,7 +832,7 @@ footer p {
         padding: 20px;
     }
     #lesson-detail h2 {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     .video-container iframe {
         height: 400px;
@@ -837,7 +842,7 @@ footer p {
 /* For screens smaller than 768px (e.g., most Tablets in portrait, large phones) */
 @media (max-width: 768px) {
     body {
-        padding-top: 85px; /* កែតម្រូវ padding-top របស់ body សម្រាប់អេក្រង់តូច */
+        padding-top: 140px; /* កែតម្រូវ padding-top របស់ body សម្រាប់អេក្រង់តូច */
         padding-bottom: 75px; /* កែតម្រូវ padding របស់ body សម្រាប់អេក្រង់តូច */
     }
     h1 { font-size: 2em; }
@@ -849,6 +854,11 @@ footer p {
     }
 
     /* Header adjustments for stacked layout */
+    .main-header {
+        padding-top: 15px; /* Increased padding top for overall header */
+        padding-bottom: 15px; /* Increased padding bottom for overall header */
+        box-sizing: border-box; /* Ensure padding is included in height calculation */
+    }
     .main-header .container {
         flex-direction: column; /* Stack items vertically */
         text-align: center;
@@ -858,7 +868,7 @@ footer p {
     }
     .header-branding {
         padding-right: 0;
-        margin-bottom: 10px; /* Reduced margin */
+        margin-bottom: 15px; /* Increased margin */
         flex: 0 0 auto; /* Ensure it takes its natural size */
     }
     .main-header .logo {
@@ -868,8 +878,8 @@ footer p {
         font-size: 0.9em;
     }
     .header-logo-right {
-        margin-top: 10px; /* Adjust margin */
-        height: 40px; /* Smaller logo */
+        margin-top: 15px; /* Increased margin */
+        height: 50px; /* Slightly larger logo */
         flex: 0 0 auto; /* Ensure it takes its natural size */
     }
     .main-nav {
@@ -880,17 +890,17 @@ footer p {
         align-items: center;
         margin-left: 0;
         width: 100%;
-        margin-top: 10px; /* Adjust margin */
-        gap: 5px; /* Reduce gap between stacked items */
+        margin-top: 15px; /* Increased margin */
+        margin-bottom: 15px; /* Increased margin */
+        gap: 8px; /* Increased gap between stacked items */
     }
     .main-nav ul li {
-        margin: 5px 0; /* Adjust space between stacked nav items */
-        width: 80%; /* Make links 80% width */
+        margin: 5px auto; /* Adjust space between stacked nav items and center */
+        width: 90%; /* Make links 90% width */
     }
     .main-nav ul li a {
         padding: 8px 15px; /* Adjust padding */
         font-size: 1em; /* Adjust font size */
-        /* width: calc(100% - 30px); */ /* Removed as width 80% is used on li */
         justify-content: center;
         display: flex; /* For centering content within the button */
         align-items: center; /* Vertically center icon and text */
@@ -900,6 +910,7 @@ footer p {
     }
     .main-nav ul li a i {
         margin-right: 0; /* Removed margin from icon to keep it centered with text */
+        font-size: 1.5em; /* Match footer icon size */
     }
 
     /* Hero section adjustments */
