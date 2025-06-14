@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ក្លឹបសិក្សាអនឡាញ - វិញ្ញាបនបត្រ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ក្លឹបសិក្សាអនឡាញ</title>
+    <link rel="manifest" href="/manifest.json"> </head>
+</head>
+<body>
+    ​<header class="main-header">
+    <div class="container">
+        <div class="header-branding">
+            <h1 class="logo">ក្រុមអ្នកនិពន្ធកម្ពុជា</h1>
+            <p class="tagline">ផ្នែកបណ្ដុះពុទ្ធិ និង សង្គម</p>
+        </div>
+        <nav class="main-nav">
+        </nav>
+        <div class="header-logo-right">
+            <img src="logo.png" alt="ក្រុមអ្នកនិពន្ធកម្ពុជា Logo">
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section id="certificate-verification" class="common-section">
+            <div class="container">
+                <h2>ពិនិត្យសុពលភាពវិញ្ញាបនបត្រ</h2>
+                <p>សូមបញ្ចូលលេខកូដវិញ្ញាបនបត្ររបស់អ្នក ដើម្បីពិនិត្យមើលសុពលភាព:</p>
+                <form id="verifyCertificateForm" class="standard-form">
+                    <div class="form-group">
+                        <label for="certCode">លេខកូដវិញ្ញាបនបត្រ:</label>
+                        <input type="text" id="certCode" name="certCode" required placeholder="ឧទាហរណ៍: ABC12345">
+                    </div>
+                    <button type="submit" class="btn btn-primary">ពិនិត្យសុពលភាព</button>
+                    <div id="verificationResult" class="form-status-message"></div>
+                </form>
+
+                <div class="certificate-info-guidance">
+                    <h3>អំពីសញ្ញាបត្ររបស់យើង</h3>
+                    <p>សញ្ញាបត្ររបស់យើងត្រូវបានផ្តល់ជូនដល់សិស្សានុសិស្សដែលបានបញ្ចប់វគ្គសិក្សាដោយជោគជ័យ និងបានបំពេញតាមលក្ខខណ្ឌតម្រូវទាំងអស់។ សញ្ញាបត្រទាំងនេះបញ្ជាក់ពីចំណេះដឹង និងជំនាញដែលអ្នកបានទទួល។</p>
+                    <p>សម្រាប់ព័ត៌មានបន្ថែមអំពីការទទួលបានសញ្ញាបត្រ សូមចូលទៅកាន់ទំព័រ <a href="lessons.html">វគ្គសិក្សា</a> ឬ <a href="contact.html">ទំនាក់ទំនងយើងខ្ញុំ</a>។</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> ទំព័រដើម</a></li>
+                    <li><a href="lessons.html"><i class="fas fa-book"></i> វគ្គសិក្សា</a></li>
+                    <li><a href="certificates.html" class="active"><i class="fas fa-award"></i> វិញ្ញាបនបត្រ</a></li>
+                    <li><a href="library.html"><i class="fas fa-book-open"></i> បណ្ណាល័យ</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> ទំនាក់ទំនង</a></li>
+                </ul>
+            </nav>
+	</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
